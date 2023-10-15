@@ -19,21 +19,11 @@ export const HowItWorks = () => {
         >
           <Grid item xs={12} md={6}>
             <Box
-              sx={{
-                bgcolor: "#f5f4f4",
-                p: 8,
-                width: "100%",
-                display: "flex",
-                justifyContent: "center",
-              }}
-            >
-              <Skeleton
-                sx={{ bgcolor: "grey.900" }}
-                variant="rectangular"
-                width={210}
-                height={118}
-              />
-            </Box>
+              component="img"
+              alt="The house from the offer."
+              src={"https://source.unsplash.com/random?wallpapers"}
+              sx={{ width: "350px", height: "350px", borderRadius: "3%" }}
+            />
           </Grid>
           <Grid item xs={12} md={6}>
             <Typography

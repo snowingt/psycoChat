@@ -3,6 +3,7 @@ import React from "react";
 import ResponsiveAppBar from "../components/ResponsiveAppBar";
 import { Herosection } from "../components/Herosection";
 import { HowItWorks } from "../components/HowItWorks";
+import ScorllToTopButton from "../components/atoms/ScrollToTopButton";
 
 export const Home = () => {
   return (
@@ -18,6 +19,7 @@ export const Home = () => {
         <ResponsiveAppBar />
         <Herosection />
         <HowItWorks />
+        <ScorllToTopButton />
       </Container>
     </>
   );
