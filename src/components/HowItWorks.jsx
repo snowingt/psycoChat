@@ -1,12 +1,12 @@
 import React from "react";
 import { Box, Container, Grid, Typography } from "@mui/material";
 import Skeleton from "@mui/material/Skeleton";
-import ActionAreaCard from "./atoms/ActionAreaCard";
-
+import anaPsyco from "../assets/Absolute_Reality_v16_mujer_joven_psicologa_feliz_con_fondo_bl_1.jpg";
+import { Link, animateScroll as scroll } from "react-scroll";
 export const HowItWorks = () => {
   return (
     <>
-      <Container>
+      <Container name="about">
         <Grid
           container
           spacing={2}
@@ -14,64 +14,56 @@ export const HowItWorks = () => {
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
-            height: "100vh",
+            marginBottom: "5rem",
           }}
         >
           <Grid item xs={12} md={6}>
             <Box
               component="img"
               alt="The house from the offer."
-              src={"https://source.unsplash.com/random?wallpapers"}
-              sx={{ width: "350px", height: "350px", borderRadius: "3%" }}
+              src={anaPsyco}
+              sx={{
+                width: "300px",
+                height: "350px",
+                borderRadius: "3%",
+                imageRendering: "pixelated",
+                objectFit: "cover",
+                objectPosition: "center",
+              }}
             />
           </Grid>
           <Grid item xs={12} md={6}>
             <Typography
               variant="h3"
               sx={{
-                fontFamily: "monospace",
+                fontFamily: "poppins",
                 fontWeight: 700,
                 letterSpacing: ".3rem",
                 color: "inherit",
                 textDecoration: "none",
+                textAlign: "justify",
+                fontSize: "2rem",
               }}
             >
-              Take care of your performance every day.
+              En Sanity Support, entendemos que tu salud mental es una
+              prioridad.
             </Typography>
-            <Typography variant="h5">
-              Build a well-presented brand that everyone will love. Take care to
-              develop resources continually and integrity them with previous
-              projects.
+            <Typography
+              variant="h5"
+              sx={{
+                fontFamily: "roboto",
+                fontWeight: 400,
+
+                color: "inherit",
+                textDecoration: "none",
+                textAlign: "justify",
+                fontSize: "1.4rem",
+              }}
+            >
+              Nuestra plataforma ofrece una forma única y accesible de buscar
+              orientación profesional. Conoce a Ana, tu psicóloga virtual, lista
+              para guiarte en tu viaje hacia el bienestar emocional.
             </Typography>
-          </Grid>
-        </Grid>
-        <Grid
-          container
-          spacing={2}
-          sx={{
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            height: "100vh",
-          }}
-        >
-          <Grid item xs={12} md={4}>
-            <ActionAreaCard />
-          </Grid>
-          <Grid item xs={12} md={4}>
-            <ActionAreaCard />
-          </Grid>
-          <Grid item xs={12} md={4}>
-            <ActionAreaCard />
-          </Grid>
-          <Grid item xs={12} md={4}>
-            <ActionAreaCard />
-          </Grid>
-          <Grid item xs={12} md={4}>
-            <ActionAreaCard />
-          </Grid>
-          <Grid item xs={12} md={4}>
-            <ActionAreaCard />
           </Grid>
         </Grid>
       </Container>

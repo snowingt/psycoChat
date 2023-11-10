@@ -12,14 +12,22 @@ import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import AdbIcon from "@mui/icons-material/Adb";
+import SpaIcon from "@mui/icons-material/Spa";
+import { Link, animateScroll as scroll } from "react-scroll";
+import { useNavigate, useLocation } from "react-router-dom";
 
-const pages = ["Products", "Pricing", "Blog"];
+const pages = ["Home", "About", "Chat"];
 const settings = ["Profile", "Account", "Dashboard", "Logout"];
 
 function ResponsiveAppBar() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
 
+  const location = useLocation();
+  const navigate = useNavigate();
+  const handleNavigate = (to) => {
+    navigate(to);
+  };
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
   };
@@ -41,20 +49,28 @@ function ResponsiveAppBar() {
       color="transparent"
       sx={{
         backgroundColor: "transparent",
-        color: "white",
-        boxShadow: "none",
+        bgcolor: "white",
+        boxShadow: "blur(100px)",
         backdropFilter: "blur(100px)",
         WebkitBackdropFilter: "blur(6px)",
       }}
     >
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          <AdbIcon sx={{ display: { xs: "none", md: "flex" }, mr: 1 }} />
+          <SpaIcon
+            sx={{
+              display: { xs: "none", md: "flex" },
+              mr: 1,
+              "&:hover": {
+                rotate: 360,
+                transition: "0.5s",
+              },
+            }}
+            color="primary"
+          />
           <Typography
             variant="h6"
             noWrap
-            component="a"
-            href="#app-bar-with-responsive-menu"
             sx={{
               mr: 2,
               display: { xs: "none", md: "flex" },
@@ -63,9 +79,11 @@ function ResponsiveAppBar() {
               letterSpacing: ".3rem",
               color: "inherit",
               textDecoration: "none",
+              cursor: "pointer",
             }}
+            onClick={() => handleNavigate(`/`)}
           >
-            LOGO
+            Sanity Support
           </Typography>
 
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
@@ -97,19 +115,65 @@ function ResponsiveAppBar() {
                 display: { xs: "block", md: "none" },
               }}
             >
-              {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">{page}</Typography>
-                </MenuItem>
-              ))}
+              <MenuItem
+                sx={{
+                  display: "flex",
+                  flexDirection: "column",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  gap: "1rem",
+                }}
+              >
+                <span
+                  sx={{
+                    mr: 2,
+                    display: { xs: "none", md: "flex" },
+                    fontFamily: "roboto",
+                    fontWeight: 300,
+                    letterSpacing: ".3rem",
+                    color: "inherit",
+                    textDecoration: "none",
+                    "&:hover": {
+                      color: "primary.main",
+                    },
+                  }}
+                  onClick={() => handleNavigate(`/`)}
+                >
+                  Home
+                </span>
+                <span
+                  sx={{
+                    mr: 2,
+                    display: { xs: "none", md: "flex" },
+                    fontFamily: "roboto",
+                    fontWeight: 300,
+                    letterSpacing: ".3rem",
+                    color: "inherit",
+                    textDecoration: "none",
+                    "&:hover": {
+                      color: "primary.main",
+                    },
+                  }}
+                  onClick={() => handleNavigate(`/chat`)}
+                >
+                  Chat
+                </span>
+              </MenuItem>
             </Menu>
           </Box>
-          <AdbIcon sx={{ display: { xs: "flex", md: "none" }, mr: 1 }} />
+          <SpaIcon
+            sx={{
+              display: { xs: "flex", md: "none" },
+              mr: 1,
+              "&:hover": {
+                rotate: 360,
+                transition: "0.5s",
+              },
+            }}
+          />
           <Typography
             variant="h5"
             noWrap
-            component="a"
-            href="#app-bar-with-responsive-menu"
             sx={{
               mr: 2,
               display: { xs: "flex", md: "none" },
@@ -119,22 +183,150 @@ function ResponsiveAppBar() {
               letterSpacing: ".3rem",
               color: "inherit",
               textDecoration: "none",
-            }}
-          >
-            LOGO
-          </Typography>
-          <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
-            {pages.map((page) => (
-              <Button
-                key={page}
-                onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: "white", display: "block" }}
-              >
-                {page}
-              </Button>
-            ))}
-          </Box>
 
+              "&:hover": {
+                cursor: "pointer",
+              },
+            }}
+            onClick={() => handleNavigate(`/`)}
+          >
+            Sanity Support
+          </Typography>
+          {location.pathname !== "/chat" && location.pathname !== "/login" && (
+            <Box
+              sx={{
+                flexGrow: 1,
+                display: {
+                  xs: "none",
+                  md: "flex",
+                  gap: "1rem",
+                  marginLeft: "2rem",
+                },
+              }}
+            >
+              <Link
+                activeClass="active"
+                to="home"
+                spy={true}
+                smooth={true}
+                offset={-70}
+                duration={500}
+                style={{ textDecoration: "none" }}
+              >
+                <Typography
+                  variant="h6"
+                  noWrap
+                  sx={{
+                    mr: 2,
+                    display: { xs: "none", md: "flex" },
+                    fontFamily: "roboto",
+                    fontWeight: 300,
+                    letterSpacing: ".3rem",
+                    color: "inherit",
+                    textDecoration: "none",
+                    "&:hover": {
+                      color: "primary.main",
+                    },
+                  }}
+                  onClick={() => handleNavigate(`/`)}
+                  s
+                >
+                  Home
+                </Typography>
+              </Link>
+              <Link
+                activeClass="active"
+                to="about"
+                spy={true}
+                smooth={true}
+                offset={-70}
+                duration={500}
+                style={{ textDecoration: "none" }}
+              >
+                <Typography
+                  variant="h6"
+                  noWrap
+                  sx={{
+                    mr: 2,
+                    display: { xs: "none", md: "flex" },
+                    fontFamily: "roboto",
+                    fontWeight: 300,
+                    letterSpacing: ".3rem",
+                    color: "inherit",
+                    textDecoration: "none",
+                    "&:hover": {
+                      color: "primary.main",
+                      cursor: "pointer",
+                    },
+                  }}
+                >
+                  About
+                </Typography>
+              </Link>
+              <Link
+                activeClass="active"
+                to="testimonials"
+                spy={true}
+                smooth={true}
+                offset={-70}
+                duration={500}
+                style={{ textDecoration: "none" }}
+              >
+                <Typography
+                  variant="h6"
+                  noWrap
+                  sx={{
+                    mr: 2,
+                    display: { xs: "none", md: "flex" },
+                    fontFamily: "roboto",
+                    fontWeight: 300,
+                    letterSpacing: ".3rem",
+                    color: "inherit",
+                    textDecoration: "none",
+                    "&:hover": {
+                      color: "primary.main",
+                      cursor: "pointer",
+                    },
+                  }}
+                >
+                  Testimonios
+                </Typography>
+              </Link>
+              <Link
+                activeClass="active"
+                to="testimonials"
+                spy={true}
+                smooth={true}
+                offset={-70}
+                duration={500}
+                style={{ textDecoration: "none" }}
+              >
+                <Typography
+                  variant="h6"
+                  noWrap
+                  component="a"
+                  href="#app-bar-with-responsive-menu"
+                  sx={{
+                    mr: 2,
+                    display: { xs: "none", md: "flex" },
+                    fontFamily: "roboto",
+                    fontWeight: 300,
+                    letterSpacing: ".3rem",
+                    color: "inherit",
+                    textDecoration: "none",
+                    "&:hover": {
+                      color: "primary.main",
+                      cursor: "pointer",
+                    },
+                  }}
+                  onClick={() => handleNavigate(`/chat`)}
+                >
+                  Chat
+                </Typography>
+              </Link>
+            </Box>
+          )}
+          {/* 
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
@@ -163,7 +355,7 @@ function ResponsiveAppBar() {
                 </MenuItem>
               ))}
             </Menu>
-          </Box>
+          </Box> */}
         </Toolbar>
       </Container>
     </AppBar>
